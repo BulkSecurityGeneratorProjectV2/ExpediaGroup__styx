@@ -27,6 +27,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Files;
 import java.util.stream.Stream;
 
 import static com.hotels.styx.common.io.ResourceContentMatcher.contains;
@@ -51,7 +52,7 @@ public class FileResourceTest {
     @BeforeAll
     public void setUp() throws IOException {
         tempDir = createTempDirectory("").toFile();
-        tempFile = createTempFile("foo", "bar");
+        tempFile = Files.createTempFile("foo", "bar").toFile();
         namedTempFile = new File(tempDir, "test.txt");
         writeString(tempFile.toPath(), TEMP_FILE_CONTENT, UTF_8);
         writeString(namedTempFile.toPath(), NAMED_TEMP_FILE_CONTENT, UTF_8);

@@ -24,6 +24,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -530,7 +531,7 @@ public class YamlConfigurationTest {
 
         try {
             for (int i = 0; i < number; i++) {
-                files[i] = createTempFile("pre", "suf");
+                files[i] = Files.createTempFile("pre", "suf").toFile();
             }
 
             return files;
